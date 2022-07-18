@@ -1,6 +1,6 @@
 package global.easycoding.core;
 
-import global.easycoding.events.Activites;
+import global.easycoding.events.activity.*;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -16,6 +16,8 @@ public class Main {
 
     public static Dotenv dotenv = Dotenv.load();
     private final ShardManager shardManager;
+
+    private static final String guild = dotenv.get("GUILD_ID");
     public Main() throws LoginException {
         String token = dotenv.get("TOKEN");
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
@@ -25,12 +27,19 @@ public class Main {
         builder.enableCache(CacheFlag.VOICE_STATE);
         builder.setMemberCachePolicy(MemberCachePolicy.ALL);
         shardManager = builder.build();
-        shardManager.addEventListener(new Activites());
+        shardManager.addEventListener(new Betrayalio());
+        shardManager.addEventListener(new ChesInThePark());
+        shardManager.addEventListener(new FisingtonIo());
+        shardManager.addEventListener(new PokerNight());
+        shardManager.addEventListener(new YouTube());
+        shardManager.addEventListener(new Help());
     }
 
     public ShardManager getShardManager() {
         return shardManager;
     }
+
+
 
     public static void main(String[] args) throws LoginException {
         try {
