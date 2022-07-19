@@ -1,6 +1,4 @@
 # JDA Bot for Activities
 
-This bot is in beta, application commands are following
 
-
-You can use the bot to create a game, this is not working if you aren't in a voice channel.
+Actually this project was only meant for the Discord Games, but due to several ideas I decided to orientate the project under another name and goal. The next upcoming feature will be a ticket system.

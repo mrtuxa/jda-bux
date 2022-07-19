@@ -1,4 +1,4 @@
-package global.easycoding.cmd.activity;
+package global.easycoding.cmd.activity.stable;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,15 +12,15 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class WordSnacks extends ListenerAdapter {
+public class BobbleLeague extends ListenerAdapter {
 
     private static final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("WORD_SNACKS");
-        if (event.getMessage().getContentStripped().equals("!wordsnacks")) {
+        String game = dotenv.get("BOBBLE_LEAGUE");
+        if (event.getMessage().getContentStripped().equals("!bobbleleague")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Word Snacks").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Bobble League").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -29,10 +29,9 @@ public class WordSnacks extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Word Snacks").setDescription("Word Snacks").build()).setActionRow(Button.link(invite, "Word Snacks")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Bobble League").setDescription("Bobble League").build()).setActionRow(Button.link(invite, "Bobble League")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }
     }
 }
-

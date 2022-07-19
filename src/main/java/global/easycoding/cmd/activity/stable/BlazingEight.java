@@ -1,4 +1,4 @@
-package global.easycoding.cmd.activity;
+package global.easycoding.cmd.activity.stable;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,15 +12,15 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Betrayalio extends ListenerAdapter {
+public class BlazingEight extends ListenerAdapter {
+
     private static final Dotenv dotenv = Main.dotenv;
 
-    @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("BETRAYAL_IO");
-        if (event.getMessage().getContentStripped().equals("!betrayal")) {
+        String game = dotenv.get("BALZING_8S");
+        if (event.getMessage().getContentStripped().equals("!blazingeight")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Betrayal.io").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Blazing Eight").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -29,9 +29,10 @@ public class Betrayalio extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Betrayal.io").setDescription("Play Betrayal.io with your friends").build()).setActionRow(Button.link(invite, "Betrayal.io")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Blazing Eight").setDescription("Blazing Eight").build()).setActionRow(Button.link(invite, "Blazing Eight")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }
     }
 }
+

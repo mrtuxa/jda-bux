@@ -1,4 +1,4 @@
-package global.easycoding.cmd.activity;
+package global.easycoding.cmd.activity.stable;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,16 +12,16 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class YouTube extends ListenerAdapter {
+public class FisingtonIo extends ListenerAdapter {
 
     private static final Dotenv dotenv = Main.dotenv;
 
-
+    @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("YOUTUBE");
-        if (event.getMessage().getContentStripped().equals("!youtube")) {
+        String game = dotenv.get("FISHINGTON_IO");
+        if (event.getMessage().getContentStripped().equals("!fishington")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to watch YouTube").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Fishington.io").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -30,7 +30,7 @@ public class YouTube extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Watch Together").setDescription("YouTube Together").build()).setActionRow(Button.link(invite, "Youtube")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Fishington.io").setDescription("Play Fishington.io together with your friends").build()).setActionRow(Button.link(invite, "Fishington.io")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }

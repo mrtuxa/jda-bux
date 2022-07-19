@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button;
 public class SetTicket extends ListenerAdapter {
 
     public void onMessageReceived(MessageReceivedEvent event) {
-        if (event.getMessage().getContentStripped().equals("setTicket")) {
+        if (event.getMessage().getContentStripped().equals("!setTicket")) {
             String role = String.valueOf(event.getMember().getRoles());
             if (role.contains("Owner")) {
                 EmbedBuilder ticket = new EmbedBuilder();
