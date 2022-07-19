@@ -1,7 +1,5 @@
 # JDA Bot for Activities
 
-[![CodeQL](https://github.com/mrtuxa/jda-activities/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mrtuxa/jda-activities/actions/workflows/codeql-analysis.yml)
-
 This bot is in beta, application commands are following
 
 
