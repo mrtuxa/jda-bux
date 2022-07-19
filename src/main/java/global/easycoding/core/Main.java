@@ -27,12 +27,26 @@ public class Main {
         builder.enableCache(CacheFlag.VOICE_STATE);
         builder.setMemberCachePolicy(MemberCachePolicy.ALL);
         shardManager = builder.build();
+        shardManager.addEventListener(new AskAway());
+        shardManager.addEventListener(new AwkWord());
         shardManager.addEventListener(new Betrayalio());
-        shardManager.addEventListener(new ChesInThePark());
+        shardManager.addEventListener(new BlazingEight());
+        shardManager.addEventListener(new BobbleLeague());
+        shardManager.addEventListener(new CheckersInThePark());
+        shardManager.addEventListener(new ChessInThePark());
+        shardManager.addEventListener(new DoodleCrew());
+        shardManager.addEventListener(new DoodleCrew());
         shardManager.addEventListener(new FisingtonIo());
-        shardManager.addEventListener(new PokerNight());
-        shardManager.addEventListener(new YouTube());
         shardManager.addEventListener(new Help());
+        shardManager.addEventListener(new Landio());
+        shardManager.addEventListener(new LetterLeague());
+        shardManager.addEventListener(new PokerNight());
+        shardManager.addEventListener(new PuttParty());
+        shardManager.addEventListener(new SketchHeads());
+        shardManager.addEventListener(new SketchyArtist());
+        shardManager.addEventListener(new SpellCast());
+        shardManager.addEventListener(new YouTube());
+        shardManager.addEventListener(new WordSnacks());
     }
 
     public ShardManager getShardManager() {
