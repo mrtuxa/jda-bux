@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LetterLeague extends ListenerAdapter {
 
-    private static Dotenv dotenv = Main.dotenv;
+    private static final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(MessageReceivedEvent event) {
         String game = dotenv.get("LETTER_LEAGUE");

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SketchyArtist extends ListenerAdapter {
 
-    private Dotenv dotenv = Main.dotenv;
+    private final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         String game = dotenv.get("SKETCHY_ARTIST");

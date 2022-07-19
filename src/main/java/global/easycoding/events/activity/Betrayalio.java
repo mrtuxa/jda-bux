@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class Betrayalio extends ListenerAdapter {
-    private static Dotenv dotenv = Main.dotenv;
+    private static final Dotenv dotenv = Main.dotenv;
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {

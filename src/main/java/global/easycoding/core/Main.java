@@ -15,9 +15,9 @@ import javax.security.auth.login.LoginException;
 public class Main {
 
     public static Dotenv dotenv = Dotenv.load();
+    private static final String guild = dotenv.get("GUILD_ID");
     private final ShardManager shardManager;
 
-    private static final String guild = dotenv.get("GUILD_ID");
     public Main() throws LoginException {
         String token = dotenv.get("TOKEN");
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
@@ -49,17 +49,15 @@ public class Main {
         shardManager.addEventListener(new WordSnacks());
     }
 
-    public ShardManager getShardManager() {
-        return shardManager;
-    }
-
-
-
     public static void main(String[] args) throws LoginException {
         try {
             Main api = new Main();
         } catch (LoginException e) {
             System.out.println("Token is invalid");
         }
+    }
+
+    public ShardManager getShardManager() {
+        return shardManager;
     }
 }

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class AskAway extends ListenerAdapter {
 
-    private static Dotenv dotenv = Main.dotenv;
+    private static final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         String game = dotenv.get("ASK_AWAY");

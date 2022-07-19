@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class FisingtonIo extends ListenerAdapter {
 
-    private static Dotenv dotenv = Main.dotenv;
+    private static final Dotenv dotenv = Main.dotenv;
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {

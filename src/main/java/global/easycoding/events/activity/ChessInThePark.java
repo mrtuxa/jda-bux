@@ -14,18 +14,18 @@ import java.util.concurrent.TimeUnit;
 
 public class ChessInThePark extends ListenerAdapter {
 
-    private static Dotenv dotenv = Main.dotenv;
+    private static final Dotenv dotenv = Main.dotenv;
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         String game = dotenv.get("CHESS_IN_THE_PARK");
         if (event.getMessage().getContentStripped().equals("!chessinthepark")) {
-           if (event.getMember().getVoiceState().getChannel() == null) {
-               event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Chess in the Park").setColor(Color.RED).build()).queue(message -> {
-                   message.delete().queueAfter(15, TimeUnit.MINUTES);
-               });
-               return;
-           }
+            if (event.getMember().getVoiceState().getChannel() == null) {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Chess in the Park").setColor(Color.RED).build()).queue(message -> {
+                    message.delete().queueAfter(15, TimeUnit.MINUTES);
+                });
+                return;
+            }
 
             VoiceChannel vc = event.getGuild().getVoiceChannelById(event.getMember().getVoiceState().getChannel().getId());
             String invite = vc.createInvite().setTargetApplication(game)
