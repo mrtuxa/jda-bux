@@ -1,4 +1,4 @@
-package global.easycoding.events.activity;
+package global.easycoding.cmd.activity;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,15 +12,15 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class CheckersInThePark extends ListenerAdapter {
+public class BlazingEight extends ListenerAdapter {
 
     private static final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("CHECKERS_IN_THE_PARK");
-        if (event.getMessage().getContentStripped().equals("!checkersinthepark")) {
+        String game = dotenv.get("BALZING_8S");
+        if (event.getMessage().getContentStripped().equals("!blazingeight")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Checkers in the Park").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Blazing Eight").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -29,7 +29,7 @@ public class CheckersInThePark extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Checkers in the Park").setDescription("Checkers in the Park").build()).setActionRow(Button.link(invite, "Checkers in the Park")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Blazing Eight").setDescription("Blazing Eight").build()).setActionRow(Button.link(invite, "Blazing Eight")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }

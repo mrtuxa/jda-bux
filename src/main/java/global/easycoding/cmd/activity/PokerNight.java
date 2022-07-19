@@ -1,4 +1,4 @@
-package global.easycoding.events.activity;
+package global.easycoding.cmd.activity;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,15 +12,16 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class SpellCast extends ListenerAdapter {
+public class PokerNight extends ListenerAdapter {
 
     private static final Dotenv dotenv = Main.dotenv;
 
+    @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("SPELL_CAST");
-        if (event.getMessage().getContentStripped().equals("!spellcast")) {
+        String game = dotenv.get("POKER_NIGHT");
+        if (event.getMessage().getContentStripped().equals("!pokernight")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Spell Cast").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Poker").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -29,7 +30,7 @@ public class SpellCast extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Spell Cast").setDescription("Spell Cast").build()).setActionRow(Button.link(invite, "Spell Cast")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Poker Night").setDescription("Play Poker with your best friends or lonenly (if you don't have friends)").build()).setActionRow(Button.link(invite, "Poker Night")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }

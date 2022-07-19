@@ -1,4 +1,4 @@
-package global.easycoding.events.activity;
+package global.easycoding.cmd.activity;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;

@@ -1,4 +1,4 @@
-package global.easycoding.events.activity;
+package global.easycoding.cmd.activity;
 
 import global.easycoding.core.Main;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -12,15 +12,15 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class AskAway extends ListenerAdapter {
+public class SketchyArtist extends ListenerAdapter {
 
-    private static final Dotenv dotenv = Main.dotenv;
+    private final Dotenv dotenv = Main.dotenv;
 
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String game = dotenv.get("ASK_AWAY");
-        if (event.getMessage().getContentStripped().equals("!askaway")) {
+        String game = dotenv.get("SKETCHY_ARTIST");
+        if (event.getMessage().getContentStripped().equals("!sketchyartist")) {
             if (event.getMember().getVoiceState().getChannel() == null) {
-                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Ask Away").setColor(Color.RED).build()).queue(message -> {
+                event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Activity Manager").setDescription("You must be in a voice channel to play Sketchy Artist").setColor(Color.RED).build()).queue(message -> {
                     message.delete().queueAfter(15, TimeUnit.MINUTES);
                 });
                 return;
@@ -29,7 +29,7 @@ public class AskAway extends ListenerAdapter {
             String invite = vc.createInvite().setTargetApplication(game)
                     .complete()
                     .getUrl();
-            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Ask Away").setDescription("Ask Away").build()).setActionRow(Button.link(invite, "Ask Away")).queue(message -> {
+            event.getChannel().sendMessageEmbeds(new EmbedBuilder().setTitle("Sketchy Artist").setDescription("Play Sketchy Artist with your best friends or lonenly (if you don't have friends)").build()).setActionRow(Button.link(invite, "Sketchy Artist")).queue(message -> {
                 message.delete().queueAfter(15, TimeUnit.MINUTES);
             });
         }

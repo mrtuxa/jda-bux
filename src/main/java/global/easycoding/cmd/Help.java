@@ -1,4 +1,4 @@
-package global.easycoding.events.activity;
+package global.easycoding.cmd;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

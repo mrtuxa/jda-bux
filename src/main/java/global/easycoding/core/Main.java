@@ -1,9 +1,12 @@
 package global.easycoding.core;
 
-import global.easycoding.events.activity.*;
+import global.easycoding.cmd.Help;
+import global.easycoding.cmd.activity.*;
+import global.easycoding.cmd.slash.HelpSlash;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
@@ -11,6 +14,7 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 import javax.security.auth.login.LoginException;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -47,6 +51,8 @@ public class Main {
         shardManager.addEventListener(new SpellCast());
         shardManager.addEventListener(new YouTube());
         shardManager.addEventListener(new WordSnacks());
+        shardManager.addEventListener(new HelpSlash());
+
     }
 
     public static void main(String[] args) throws LoginException {
