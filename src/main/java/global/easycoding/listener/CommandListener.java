@@ -15,6 +15,6 @@ public class CommandListener extends ListenerAdapter {
     private static final HashMap<String, Command> commands = new HashMap<>();
 
     public CommandListener() {
-        List<Command> Commands = new ArrayList<>(Arrays.asList(new Help(), ne))
+      //
     }
 }

@@ -17,7 +17,7 @@ public class Prefix extends Command {
         User user = event.getAuthor();
         Member member = event.getMember();
         String[] args = event.getArgs();
-        Guild guild = event.getGuild()
+        Guild guild = event.getGuild();
 
     }
 }
