@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS guildprefix (guildprefix VARCHAR(18) NOT NULL, prefix VARCHAR(8) NOT)

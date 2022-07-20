@@ -3,6 +3,7 @@ package global.easycoding.core;
 import global.easycoding.cmd.Help;
 import global.easycoding.cmd.SetTicket;
 import global.easycoding.cmd.activity.stable.*;
+import global.easycoding.events.secure.Streaming;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
@@ -50,6 +51,7 @@ public class Main {
         shardManager.addEventListener(new YouTube());
         shardManager.addEventListener(new WordSnacks());
         shardManager.addEventListener(new SetTicket());
+        shardManager.addEventListener(new Streaming());
     }
 
     public static void main(String[] args) throws LoginException {
@@ -60,7 +62,7 @@ public class Main {
         }
     }
 
-    public ShardManager getShardManager() {
+    public static ShardManager getShardManager() {
         return shardManager;
     }
 }
